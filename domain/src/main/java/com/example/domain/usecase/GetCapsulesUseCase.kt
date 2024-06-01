@@ -17,5 +17,5 @@ class GetCapsulesUseCase(
             }
 
     data object Request : UseCase.Request
-    data class Response(val movies: List<Capsule?>?) : UseCase.Response
+    data class Response(val capsules: List<Capsule?>?) : UseCase.Response
 }
