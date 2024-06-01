@@ -1,6 +1,8 @@
 package com.example.spacex.ui.viewmodel
 
 import androidx.lifecycle.viewModelScope
+import com.example.common.nav.CapsuleInput
+import com.example.common.nav.NavRoutes
 import com.example.common.state.MviViewModel
 import com.example.common.state.UiState
 import com.example.domain.usecase.capsule.GetCapsulesUseCase
@@ -26,7 +28,17 @@ class CapsuleListViewModel @Inject constructor(
                 loadCapsules()
             }
 
-            is CapsuleListAction.OnCapsuleItemClick -> TODO()
+            is CapsuleListAction.OnCapsuleItemClick -> {
+                submitSingleEvent(
+                    CapsuleListSingleEvent.OpenDetailsScreen(
+                        NavRoutes.Capsule.routeForCapsule(
+                            CapsuleInput(
+                                action.serial
+                            )
+                        )
+                    )
+                )
+            }
         }
     }
 

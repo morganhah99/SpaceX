@@ -19,6 +19,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.common.nav.NavRoutes
 import com.example.spacex.ui.compose.home.HomeScreen
+import com.example.spacex.ui.compose.list.capsule.CapsuleDetailsScreen
 import com.example.spacex.ui.compose.list.capsule.CapsuleListScreen
 import com.example.spacex.ui.compose.list.history.HistoryListScreen
 import com.example.spacex.ui.theme.SpaceXTheme
@@ -50,8 +51,14 @@ fun App(navController: NavHostController) {
             composable(NavRoutes.Home.route){
                 HomeScreen(navController = navController)
             }
-            composable(NavRoutes.ROUTE_CAPSULES) {
-                CapsuleListScreen(hiltViewModel())
+            composable(NavRoutes.ROUTE_CAPSULES){
+                CapsuleListScreen(hiltViewModel(), navController = navController )
+            }
+            composable(
+                route = NavRoutes.Capsule.route,
+                arguments = NavRoutes.Capsule.arguments
+            ) {
+                CapsuleDetailsScreen(NavRoutes.Capsule.fromEntry(it))
             }
             composable(NavRoutes.ROUTE_HISTORY){
                 HistoryListScreen(hiltViewModel())

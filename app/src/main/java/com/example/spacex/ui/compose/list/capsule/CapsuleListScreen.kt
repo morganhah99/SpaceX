@@ -1,5 +1,7 @@
 package com.example.spacex.ui.compose.list.capsule
 
+import android.util.Log
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -16,14 +18,17 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.common.state.CommonScreen
 import com.example.spacex.model.Capsule
 import com.example.spacex.model.CapsuleListModel
 import com.example.spacex.ui.viewmodel.CapsuleListViewModel
+import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun CapsuleListScreen(
-    viewModel: CapsuleListViewModel
+    viewModel: CapsuleListViewModel,
+    navController: NavController
 ) {
     LaunchedEffect(Unit) {
         viewModel.submitAction(CapsuleListAction.Load)
@@ -44,6 +49,17 @@ fun CapsuleListScreen(
         }
     }
 
+    LaunchedEffect(Unit) {
+        viewModel.singleEventFlow.collectLatest {
+            when (it) {
+                is CapsuleListSingleEvent.OpenDetailsScreen -> {
+                    Log.i("ROUTE", it.navRoute)
+                    navController.navigate(it.navRoute)
+                }
+            }
+        }
+    }
+
 }
 
 @Composable
@@ -58,7 +74,7 @@ fun CapsuleList(
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         items(model.items) { capsule ->
-            CapsuleItem(capsule)
+            CapsuleItem(capsule = capsule, onItemClick = onItemClick)
         }
     }
 
@@ -66,9 +82,12 @@ fun CapsuleList(
 
 
 @Composable
-fun CapsuleItem(capsule: Capsule) {
+fun CapsuleItem(capsule: Capsule, onItemClick: (Capsule) -> Unit) {
     Card(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { onItemClick(capsule) }
+        ,
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
         Column(
