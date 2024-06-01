@@ -30,6 +30,14 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.1"
+    }
+
+    buildFeatures {
+        compose = true
+    }
 }
 
 dependencies {
@@ -39,6 +47,8 @@ dependencies {
     implementation ("androidx.compose.ui:ui-tooling-preview:1.4.0")
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.5.0")
     implementation ("androidx.activity:activity-compose:1.7.0")
+
+    implementation ("androidx.compose.compiler:compiler:1.5.14")
 
 
     implementation(libs.androidx.core.ktx)

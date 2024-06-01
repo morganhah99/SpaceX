@@ -24,7 +24,9 @@ import androidx.navigation.compose.rememberNavController
 import com.example.common.nav.NavRoutes
 import com.example.spacex.ui.compose.HomeScreen
 import com.example.spacex.ui.theme.SpaceXTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
