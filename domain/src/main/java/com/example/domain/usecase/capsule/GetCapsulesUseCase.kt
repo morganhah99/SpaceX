@@ -1,7 +1,8 @@
-package com.example.domain.usecase
+package com.example.domain.usecase.capsule
 
 import com.example.domain.entity.Capsule
 import com.example.domain.repo.CapsuleRepository
+import com.example.domain.usecase.UseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

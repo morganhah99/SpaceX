@@ -3,7 +3,7 @@ package com.example.spacex.ui
 import androidx.lifecycle.viewModelScope
 import com.example.common.state.MviViewModel
 import com.example.common.state.UiState
-import com.example.domain.usecase.GetCapsulesUseCase
+import com.example.domain.usecase.capsule.GetCapsulesUseCase
 import com.example.spacex.converter.CapsuleListConverter
 import com.example.spacex.model.CapsuleListModel
 import com.example.spacex.ui.compose.list.CapsuleListAction

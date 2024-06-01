@@ -18,6 +18,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.common.nav.NavRoutes
+import com.example.spacex.ui.compose.home.HomeScreen
 import com.example.spacex.ui.compose.list.CapsuleListScreen
 import com.example.spacex.ui.theme.SpaceXTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -45,7 +46,10 @@ fun App(navController: NavHostController) {
             navController = navController,
             startDestination = NavRoutes.Home.route
         ) {
-            composable(NavRoutes.Home.route) {
+            composable(NavRoutes.Home.route){
+                HomeScreen(navController = navController)
+            }
+            composable(NavRoutes.ROUTE_CAPSULES) {
                 CapsuleListScreen(hiltViewModel())
             }
         }

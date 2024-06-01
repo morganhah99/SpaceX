@@ -2,7 +2,7 @@ package com.example.spacex.converter
 
 import android.content.Context
 import com.example.common.state.CommonResultConverter
-import com.example.domain.usecase.GetCapsulesUseCase
+import com.example.domain.usecase.capsule.GetCapsulesUseCase
 import com.example.spacex.model.Capsule
 import com.example.spacex.model.CapsuleListModel
 import dagger.hilt.android.qualifiers.ApplicationContext

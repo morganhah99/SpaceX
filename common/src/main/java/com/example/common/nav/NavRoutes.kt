@@ -12,6 +12,8 @@ sealed class NavRoutes(
 
     companion object {
         const val ROUTE_HOME = "home"
+        const val ROUTE_CAPSULES = "capsules"
+        const val ROUTE_HISTORY = "history"
     }
 
 }

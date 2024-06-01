@@ -1,8 +1,8 @@
-package com.example.spacex.di
+package com.example.spacex.di.usecase
 
 import com.example.domain.repo.CapsuleRepository
-import com.example.domain.usecase.GetCapsuleBySerialUseCase
-import com.example.domain.usecase.GetCapsulesUseCase
+import com.example.domain.usecase.capsule.GetCapsuleBySerialUseCase
+import com.example.domain.usecase.capsule.GetCapsulesUseCase
 import com.example.domain.usecase.UseCase
 import dagger.Module
 import dagger.Provides
@@ -12,13 +12,13 @@ import kotlinx.coroutines.Dispatchers
 
 @Module
 @InstallIn(SingletonComponent::class)
-class UseCaseModule {
+class CapsuleUseCaseModule {
 
     @Provides
     fun provideUseCaseConfiguration(): UseCase.Configuration = UseCase.Configuration(Dispatchers.IO)
 
     @Provides
-    fun provideGetMoviesUseCase(
+    fun provideGetCapsulesUseCase(
         configuration: UseCase.Configuration,
         repository: CapsuleRepository
     ): GetCapsulesUseCase = GetCapsulesUseCase(
