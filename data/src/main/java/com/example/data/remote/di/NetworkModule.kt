@@ -1,4 +1,4 @@
-package com.example.data.remote
+package com.example.data.remote.di
 
 import com.example.data.remote.service.SpaceXService
 import dagger.Module
@@ -30,6 +30,6 @@ class NetworkModule {
         .build()
 
     @Provides
-    fun provideMovieService(retrofit: Retrofit): SpaceXService =
+    fun provideCapsuleService(retrofit: Retrofit): SpaceXService =
         retrofit.create(SpaceXService::class.java)
 }

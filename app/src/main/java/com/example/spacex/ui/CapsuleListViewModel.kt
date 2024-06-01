@@ -8,11 +8,12 @@ import com.example.spacex.converter.CapsuleListConverter
 import com.example.spacex.model.CapsuleListModel
 import com.example.spacex.ui.compose.list.CapsuleListAction
 import com.example.spacex.ui.compose.list.CapsuleListSingleEvent
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-
-class HomeScreenViewModel @Inject constructor(
+@HiltViewModel
+class CapsuleListViewModel @Inject constructor(
     private val useCase: GetCapsulesUseCase,
     private val converter: CapsuleListConverter
 ): MviViewModel<CapsuleListModel, UiState<CapsuleListModel>, CapsuleListAction, CapsuleListSingleEvent>() {
@@ -20,7 +21,13 @@ class HomeScreenViewModel @Inject constructor(
 
 
     override fun handleAction(action: CapsuleListAction) {
-        TODO("Not yet implemented")
+        when (action) {
+            is CapsuleListAction.Load -> {
+                loadCapsules()
+            }
+
+            is CapsuleListAction.OnCapsuleItemClick -> TODO()
+        }
     }
 
     private fun loadCapsules() {

@@ -11,4 +11,8 @@ class CapsuleRepositoryImpl(
     override fun getCapsules(): Flow<List<Capsule?>?> {
         return remoteSource.getCapsules()
     }
+
+    override fun getCapsule(serial: String?): Flow<Capsule> {
+        return remoteSource.getCapsule(serial)
+    }
 }

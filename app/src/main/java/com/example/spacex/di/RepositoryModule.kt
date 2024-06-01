@@ -13,7 +13,7 @@ import dagger.hilt.components.SingletonComponent
 class RepositoryModule {
 
     @Provides
-    fun provideMovieRepository(
+    fun provideCapsuleRepository(
         remoteSource: RemoteCapsuleDataSource,
     ): CapsuleRepository = CapsuleRepositoryImpl(
         remoteSource

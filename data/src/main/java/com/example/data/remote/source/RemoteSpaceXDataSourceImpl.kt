@@ -23,6 +23,13 @@ class RemoteSpaceXDataSourceImpl @Inject constructor(
         throw UseCaseException.SpaceXException(it)
     }
 
+    override fun getCapsule(serial: String?): Flow<Capsule> = flow {
+        emit(service.getCapsule(serial))
+    }.map {
+        convert(it)
+    }.catch {
+        throw UseCaseException.SpaceXException(it)
+    }
 
 
     private fun convert(model: CapsuleItemModel?): Capsule {

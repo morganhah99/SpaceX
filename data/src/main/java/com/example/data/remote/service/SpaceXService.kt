@@ -8,4 +8,8 @@ interface SpaceXService {
     @GET("capsules")
     suspend fun getCapsules(): List<CapsuleItemModel>
 
+    @GET("capsules/{capsule_serial}")
+    suspend fun getCapsule(serial: String?): CapsuleItemModel
+
+
 }

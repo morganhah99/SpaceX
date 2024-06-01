@@ -1,6 +1,7 @@
 package com.example.spacex.di
 
 import com.example.domain.repo.CapsuleRepository
+import com.example.domain.usecase.GetCapsuleBySerialUseCase
 import com.example.domain.usecase.GetCapsulesUseCase
 import com.example.domain.usecase.UseCase
 import dagger.Module
@@ -21,6 +22,15 @@ class UseCaseModule {
         configuration: UseCase.Configuration,
         repository: CapsuleRepository
     ): GetCapsulesUseCase = GetCapsulesUseCase(
+        configuration,
+        repository
+    )
+
+    @Provides
+    fun GetCapsuleBySerialUseCase(
+        configuration: UseCase.Configuration,
+        repository: CapsuleRepository
+    ): GetCapsuleBySerialUseCase = GetCapsuleBySerialUseCase(
         configuration,
         repository
     )

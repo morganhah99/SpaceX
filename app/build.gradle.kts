@@ -76,7 +76,9 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+
     implementation ("androidx.compose.material:material:1.4.2")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
     //Hilt
     implementation("com.google.dagger:hilt-android:2.51.1")
