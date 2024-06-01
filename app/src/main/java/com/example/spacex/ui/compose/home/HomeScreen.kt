@@ -29,7 +29,7 @@ fun HomeScreen(navController: NavHostController) {
         "Capsules" to NavRoutes.ROUTE_CAPSULES,
         "History" to NavRoutes.ROUTE_HISTORY,
         "Launches" to "",
-        "Missions" to "",
+        "Missions" to NavRoutes.ROUTE_MISSIONS,
         "Rockets" to "",
         "Ships" to ""
     )
