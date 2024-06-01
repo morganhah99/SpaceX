@@ -1,4 +1,4 @@
-package com.example.spacex.ui
+package com.example.spacex.ui.viewmodel
 
 import androidx.lifecycle.viewModelScope
 import com.example.common.state.MviViewModel
@@ -6,8 +6,8 @@ import com.example.common.state.UiState
 import com.example.domain.usecase.capsule.GetCapsulesUseCase
 import com.example.spacex.converter.CapsuleListConverter
 import com.example.spacex.model.CapsuleListModel
-import com.example.spacex.ui.compose.list.CapsuleListAction
-import com.example.spacex.ui.compose.list.CapsuleListSingleEvent
+import com.example.spacex.ui.compose.list.capsule.CapsuleListAction
+import com.example.spacex.ui.compose.list.capsule.CapsuleListSingleEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch

@@ -1,4 +1,4 @@
-package com.example.spacex.di.usecase
+package com.example.spacex.di.usecase.capsule
 
 import com.example.domain.repo.CapsuleRepository
 import com.example.domain.usecase.capsule.GetCapsuleBySerialUseCase
@@ -14,8 +14,6 @@ import kotlinx.coroutines.Dispatchers
 @InstallIn(SingletonComponent::class)
 class CapsuleUseCaseModule {
 
-    @Provides
-    fun provideUseCaseConfiguration(): UseCase.Configuration = UseCase.Configuration(Dispatchers.IO)
 
     @Provides
     fun provideGetCapsulesUseCase(

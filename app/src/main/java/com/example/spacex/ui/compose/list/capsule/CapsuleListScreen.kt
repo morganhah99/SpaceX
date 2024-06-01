@@ -1,4 +1,4 @@
-package com.example.spacex.ui.compose.list
+package com.example.spacex.ui.compose.list.capsule
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
@@ -20,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import com.example.common.state.CommonScreen
 import com.example.spacex.model.Capsule
 import com.example.spacex.model.CapsuleListModel
-import com.example.spacex.ui.CapsuleListViewModel
+import com.example.spacex.ui.viewmodel.CapsuleListViewModel
 
 @Composable
 fun CapsuleListScreen(

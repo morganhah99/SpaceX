@@ -3,6 +3,7 @@ package com.example.spacex.ui.compose.home
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
@@ -26,28 +27,45 @@ import com.example.common.nav.NavRoutes
 fun HomeScreen(navController: NavHostController) {
     val items = listOf(
         "Capsules" to NavRoutes.ROUTE_CAPSULES,
-        "History" to "", // Add appropriate routes
+        "History" to NavRoutes.ROUTE_HISTORY,
         "Launches" to "",
         "Missions" to "",
         "Rockets" to "",
         "Ships" to ""
     )
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(2),
-        contentPadding = PaddingValues(16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
-        horizontalArrangement = Arrangement.spacedBy(16.dp)
+    Column(
+        modifier = Modifier
+            .fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        items(items) { (name, route) ->
-            HomeGridItem(name = name) {
-                if (route.isNotEmpty()) {
-                    navController.navigate(route)
+        Text(
+            text = "SpaceX Dashboard",
+            style = MaterialTheme.typography.h4,
+            modifier = Modifier.padding(top = 50.dp)
+        )
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                contentPadding = PaddingValues(16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+                horizontalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                items(items) { (name, route) ->
+                    HomeGridItem(name = name) {
+                        if (route.isNotEmpty()) {
+                            navController.navigate(route)
+                        }
+                    }
                 }
             }
         }
     }
 }
-
 @Composable
 fun HomeGridItem(name: String, onClick:() -> Unit) {
     Card(

@@ -1,8 +1,8 @@
-package com.example.data.remote.source
+package com.example.data.remote.source.capsule
 
-import com.example.data.remote.model.CapsuleItemModel
+import com.example.data.remote.model.capsule.CapsuleItemModel
 import com.example.data.remote.service.SpaceXService
-import com.example.data.repo.RemoteCapsuleDataSource
+import com.example.data.repo.capsule.RemoteCapsuleDataSource
 import com.example.domain.entity.Capsule
 import com.example.domain.entity.UseCaseException
 import kotlinx.coroutines.flow.Flow
@@ -11,7 +11,8 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-class RemoteSpaceXDataSourceImpl @Inject constructor(
+
+class RemoteCapsuleDataSourceImpl @Inject constructor(
     private val service: SpaceXService
 ) : RemoteCapsuleDataSource {
     override fun getCapsules(): Flow<List<Capsule?>?> = flow {

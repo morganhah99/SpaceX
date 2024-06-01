@@ -1,7 +1,9 @@
 package com.example.data.remote.di
 
-import com.example.data.remote.source.RemoteSpaceXDataSourceImpl
-import com.example.data.repo.RemoteCapsuleDataSource
+import com.example.data.remote.source.capsule.RemoteCapsuleDataSourceImpl
+import com.example.data.remote.source.history.RemoteHistoryDataSourceImpl
+import com.example.data.repo.capsule.RemoteCapsuleDataSource
+import com.example.data.repo.history.RemoteHistoryDataSource
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -13,5 +15,12 @@ import dagger.hilt.components.SingletonComponent
 abstract class RemoteDataSourceModule {
 
     @Binds
-    abstract fun bindCompanyInfoDataSource(datasource: RemoteSpaceXDataSourceImpl): RemoteCapsuleDataSource
+    abstract fun bindCapsuleInfoDataSource(datasource: RemoteCapsuleDataSourceImpl): RemoteCapsuleDataSource
+
+    @Binds
+    abstract fun bindHistoryInfoDataSource(datasource: RemoteHistoryDataSourceImpl): RemoteHistoryDataSource
+
+
+
+
 }

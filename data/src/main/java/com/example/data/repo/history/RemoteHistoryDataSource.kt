@@ -1,9 +1,9 @@
-package com.example.domain.repo
+package com.example.data.repo.history
 
 import com.example.domain.entity.History
 import kotlinx.coroutines.flow.Flow
 
-interface HistoryRepository {
+interface RemoteHistoryDataSource {
 
     fun getHistory(): Flow<List<History?>?>
 

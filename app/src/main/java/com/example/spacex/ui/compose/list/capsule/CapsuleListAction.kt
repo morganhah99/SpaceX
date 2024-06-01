@@ -1,4 +1,4 @@
-package com.example.spacex.ui.compose.list
+package com.example.spacex.ui.compose.list.capsule
 
 import com.example.common.state.UiAction
 

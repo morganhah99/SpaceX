@@ -1,4 +1,4 @@
-package com.example.data.repo
+package com.example.data.repo.capsule
 
 import com.example.domain.entity.Capsule
 import com.example.domain.repo.CapsuleRepository

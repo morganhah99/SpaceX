@@ -1,6 +1,7 @@
 package com.example.data.remote.service
 
-import com.example.data.remote.model.CapsuleItemModel
+import com.example.data.remote.model.capsule.CapsuleItemModel
+import com.example.data.remote.model.history.HistoryModel
 import retrofit2.http.GET
 
 interface SpaceXService {
@@ -10,6 +11,12 @@ interface SpaceXService {
 
     @GET("capsules/{capsule_serial}")
     suspend fun getCapsule(serial: String?): CapsuleItemModel
+
+    @GET("history")
+    suspend fun getHistory(): List<HistoryModel>
+
+    @GET("history/{id}")
+    suspend fun getHistoryItem(id: Int?): HistoryModel
 
 
 }
