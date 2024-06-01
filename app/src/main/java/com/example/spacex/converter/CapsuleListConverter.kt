@@ -22,7 +22,6 @@ class CapsuleListConverter @Inject constructor(
                     capsuleSerial = it?.capsuleSerial,
                     details = it?.details,
                     landings = it?.landings,
-                    missions = it?.missions,
                     originalLaunch = it?.originalLaunch,
                     originalLaunchUnix = it?.originalLaunchUnix,
                     reuseCount = it?.reuseCount,
