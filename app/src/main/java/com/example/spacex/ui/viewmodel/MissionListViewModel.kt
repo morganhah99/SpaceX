@@ -6,8 +6,8 @@ import com.example.common.state.UiState
 import com.example.domain.usecase.mission.GetMissionsUseCase
 import com.example.spacex.converter.MissionListConverter
 import com.example.spacex.model.MissionListModel
-import com.example.spacex.ui.compose.list.mission.MissionListAction
-import com.example.spacex.ui.compose.list.mission.MissionListSingleEvent
+import com.example.spacex.ui.uiaction.mission.MissionListAction
+import com.example.spacex.ui.uiaction.mission.MissionListSingleEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch

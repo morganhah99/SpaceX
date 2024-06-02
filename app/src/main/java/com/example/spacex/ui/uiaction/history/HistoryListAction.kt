@@ -1,4 +1,4 @@
-package com.example.spacex.ui.compose.list.history
+package com.example.spacex.ui.uiaction.history
 
 import com.example.common.state.UiAction
 

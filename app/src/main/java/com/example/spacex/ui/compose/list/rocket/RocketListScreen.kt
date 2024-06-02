@@ -19,13 +19,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.common.state.CommonScreen
-import com.example.spacex.model.Mission
-import com.example.spacex.model.MissionListModel
 import com.example.spacex.model.Rocket
 import com.example.spacex.model.RocketListModel
-import com.example.spacex.ui.compose.list.mission.Mission
-import com.example.spacex.ui.compose.list.mission.MissionList
-import com.example.spacex.ui.compose.list.mission.MissionListAction
+import com.example.spacex.ui.uiaction.rocket.RocketListAction
 import com.example.spacex.ui.viewmodel.RocketListViewModel
 
 @Composable

@@ -28,7 +28,7 @@ fun HomeScreen(navController: NavHostController) {
     val items = listOf(
         "Capsules" to NavRoutes.ROUTE_CAPSULES,
         "History" to NavRoutes.ROUTE_HISTORY,
-        "Launches" to "",
+        "Launches" to NavRoutes.ROUTE_LAUNCHES,
         "Missions" to NavRoutes.ROUTE_MISSIONS,
         "Rockets" to NavRoutes.ROUTE_ROCKETS,
         "Ships" to ""

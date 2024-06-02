@@ -1,4 +1,4 @@
-package com.example.spacex.ui.compose.list.mission
+package com.example.spacex.ui.uiaction.mission
 
 import com.example.common.state.UiSingleEvent
 

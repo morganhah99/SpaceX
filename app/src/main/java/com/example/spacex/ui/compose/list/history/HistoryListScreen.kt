@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import com.example.common.state.CommonScreen
 import com.example.spacex.model.HistoryItem
 import com.example.spacex.model.HistoryListModel
+import com.example.spacex.ui.uiaction.history.HistoryListAction
 import com.example.spacex.ui.viewmodel.HistoryListViewModel
 
 @Composable

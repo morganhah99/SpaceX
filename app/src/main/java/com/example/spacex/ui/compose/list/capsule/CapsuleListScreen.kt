@@ -22,6 +22,8 @@ import androidx.navigation.NavController
 import com.example.common.state.CommonScreen
 import com.example.spacex.model.Capsule
 import com.example.spacex.model.CapsuleListModel
+import com.example.spacex.ui.uiaction.capsule.CapsuleListAction
+import com.example.spacex.ui.uiaction.capsule.CapsuleListSingleEvent
 import com.example.spacex.ui.viewmodel.CapsuleListViewModel
 import kotlinx.coroutines.flow.collectLatest
 

@@ -1,6 +1,5 @@
-package com.example.spacex.ui.compose.list.mission
+package com.example.spacex.ui.compose.list.launch
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -17,32 +16,33 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import com.example.common.state.CommonScreen
-import com.example.spacex.model.Mission
-import com.example.spacex.model.MissionListModel
-import com.example.spacex.ui.uiaction.mission.MissionListAction
-import com.example.spacex.ui.viewmodel.MissionListViewModel
+import com.example.spacex.model.Launch
+import com.example.spacex.model.LaunchListModel
+import com.example.spacex.ui.compose.list.history.HistoryList
+import com.example.spacex.ui.uiaction.history.HistoryListAction
+import com.example.spacex.ui.uiaction.launch.LaunchListAction
+import com.example.spacex.ui.viewmodel.LaunchListViewModel
 
 @Composable
-fun MissionListScreen(
-    viewModel: MissionListViewModel,
-    navController: NavController
+fun LaunchListScreen(
+    viewModel: LaunchListViewModel
 ) {
     LaunchedEffect(Unit) {
-        viewModel.submitAction(MissionListAction.Load)
+        viewModel.submitAction(LaunchListAction.Load)
     }
 
-    viewModel.uiStateFlow.collectAsState().value.let { state ->
+    viewModel.uiStateFlow.collectAsState().value.let{ state->
         CommonScreen(state = state) {
             Column {
-                MissionList(it) { item ->
+                LaunchList(it) { item ->
                     viewModel.submitAction(
-                        MissionListAction.OnMissionItemClick(
-                            item.missionId
+                        LaunchListAction.OnLaunchItemClick(
+                            item.flightNumber
                         )
                     )
                 }
+
             }
 
         }
@@ -50,31 +50,29 @@ fun MissionListScreen(
 }
 
 @Composable
-fun MissionList(
-    model: MissionListModel,
-    onItemClick: (Mission) -> Unit,
+fun LaunchList(
+    model: LaunchListModel,
+    onItemClick: (Launch) -> Unit
 ) {
-
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        items(model.items) { mission ->
-            Mission(mission = mission, onItemClick = onItemClick)
+        items(model.items) { launch ->
+            LaunchItem(launch)
         }
     }
 
 }
 
 
+
+
 @Composable
-fun Mission(mission: Mission, onItemClick: (Mission) -> Unit) {
+fun LaunchItem(launchItem: Launch) {
     Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable { onItemClick(mission) }
-        ,
+        modifier = Modifier.fillMaxWidth(),
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
         Column(
@@ -82,9 +80,11 @@ fun Mission(mission: Mission, onItemClick: (Mission) -> Unit) {
                 .fillMaxWidth()
                 .padding(16.dp)
         ) {
-            Text(text = "Mission ID: ${mission.missionId}")
-            Text(text = "Mission Name: ${mission.missionName}")
-            Text(text = "Details: ${mission.description}")
+            Text(text = "Title: ${launchItem.details}")
+            Text(text = "Details: ${launchItem.flightNumber}")
+            Text(text = "Event Date (UTC): ${launchItem.launchSuccess}")
+            Text(text = "Flight Number: ${launchItem.missionName}")
         }
+
     }
 }

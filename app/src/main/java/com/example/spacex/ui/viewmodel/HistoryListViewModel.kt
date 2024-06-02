@@ -6,8 +6,8 @@ import com.example.common.state.UiState
 import com.example.domain.usecase.history.GetHistoryUseCase
 import com.example.spacex.converter.HistoryListConverter
 import com.example.spacex.model.HistoryListModel
-import com.example.spacex.ui.compose.list.history.HistoryListAction
-import com.example.spacex.ui.compose.list.history.HistoryListSingleEvent
+import com.example.spacex.ui.uiaction.history.HistoryListAction
+import com.example.spacex.ui.uiaction.history.HistoryListSingleEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch

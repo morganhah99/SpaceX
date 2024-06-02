@@ -6,8 +6,8 @@ import com.example.common.state.UiState
 import com.example.domain.usecase.rocket.GetRocketsUseCase
 import com.example.spacex.converter.RocketListConverter
 import com.example.spacex.model.RocketListModel
-import com.example.spacex.ui.compose.list.rocket.RocketListAction
-import com.example.spacex.ui.compose.list.rocket.RocketListSingleEvent
+import com.example.spacex.ui.uiaction.rocket.RocketListAction
+import com.example.spacex.ui.uiaction.rocket.RocketListSingleEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch

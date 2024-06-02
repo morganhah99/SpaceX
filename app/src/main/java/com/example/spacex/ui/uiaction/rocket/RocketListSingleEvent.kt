@@ -1,4 +1,4 @@
-package com.example.spacex.ui.compose.list.rocket
+package com.example.spacex.ui.uiaction.rocket
 
 import com.example.common.state.UiSingleEvent
 
