@@ -111,7 +111,11 @@ fun App(navController: NavHostController) {
             bottomBarState.value = true
             topBarState.value = false
         }
+        NavRoutes.ROUTE_AUTH -> {
+            bottomBarState.value = false
+            topBarState.value = false
 
+        }
         else -> {
             bottomBarState.value = false
             topBarState.value = true
