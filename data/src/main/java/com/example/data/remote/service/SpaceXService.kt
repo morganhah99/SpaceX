@@ -1,5 +1,6 @@
 package com.example.data.remote.service
 
+import com.example.data.remote.model.launch.LaunchItemModel
 import com.example.data.remote.model.capsule.CapsuleItemModel
 import com.example.data.remote.model.history.HistoryModel
 import com.example.data.remote.model.mission.MissionItemModel
@@ -31,6 +32,12 @@ interface SpaceXService {
 
     @GET("rockets/{id}")
     suspend fun getRocket(id: Int?): RocketItemModel
+
+    @GET("launches")
+    suspend fun getLaunches(): List<LaunchItemModel>
+
+    @GET("launches/{flight_number}")
+    suspend fun getLaunch(number: Int?): LaunchItemModel
 
 
 }
