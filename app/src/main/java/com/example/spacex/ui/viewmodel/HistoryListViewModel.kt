@@ -1,11 +1,17 @@
 package com.example.spacex.ui.viewmodel
 
 import androidx.lifecycle.viewModelScope
+import com.example.common.nav.input.CapsuleInput
+import com.example.common.nav.input.CapsuleNavRoutes
+import com.example.common.nav.input.HistoryInput
+import com.example.common.nav.input.HistoryNavRoutes
 import com.example.common.state.MviViewModel
 import com.example.common.state.UiState
 import com.example.domain.usecase.history.GetHistoryUseCase
 import com.example.spacex.converter.HistoryListConverter
 import com.example.spacex.model.HistoryListModel
+import com.example.spacex.ui.uiaction.capsule.CapsuleListAction
+import com.example.spacex.ui.uiaction.capsule.CapsuleListSingleEvent
 import com.example.spacex.ui.uiaction.history.HistoryListAction
 import com.example.spacex.ui.uiaction.history.HistoryListSingleEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -25,7 +31,20 @@ class HistoryListViewModel @Inject constructor(
             is HistoryListAction.Load -> {
                 loadHistory()
             }
-            is HistoryListAction.OnHistoryItemClick ->  TODO()
+            is HistoryListAction.OnHistoryItemClick -> {
+                submitSingleEvent(
+                    HistoryListSingleEvent.OpenDetailsScreen(
+                        HistoryNavRoutes.Details.routeForHistory(
+                            HistoryInput(
+                                action.title,
+                                action.details,
+                                action.flightNumber,
+                                action.date
+                            )
+                        )
+                    )
+                )
+            }
         }
     }
 

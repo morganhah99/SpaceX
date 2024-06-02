@@ -7,6 +7,7 @@ import androidx.navigation.NavType
 import androidx.navigation.navArgument
 import com.example.common.nav.input.CapsuleInput
 import com.example.common.nav.input.CapsuleNavRoutes
+import com.example.common.nav.input.HistoryNavRoutes
 
 sealed class NavRoutes(
     val route: String,
@@ -14,6 +15,8 @@ sealed class NavRoutes(
 ) {
     data object Home : NavRoutes(ROUTE_HOME)
     object Capsule : NavRoutes(CapsuleNavRoutes.Details.route, CapsuleNavRoutes.Details.arguments)
+
+    object History : NavRoutes(HistoryNavRoutes.Details.route, HistoryNavRoutes.Details.arguments)
 
 
     companion object {
@@ -25,10 +28,6 @@ sealed class NavRoutes(
         const val ROUTE_SHIPS = "ships"
         const val ROUTE_AUTH = "auth"
         const val ROUTE_HISTORY = "history"
-        const val ARG_CAPSULE_DATA = "capsule_data"
-        const val ROUTE_CAPSULE_DETAILS = "capsuleDetails"
-        const val ARG_CAPSULE_SERIAL = "capsule_serial"
-        const val ARG_CAPSULE_DETAILS = "capsule_details"
 
     }
 }

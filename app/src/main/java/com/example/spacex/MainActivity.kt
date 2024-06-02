@@ -29,11 +29,13 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.common.nav.NavRoutes
 import com.example.common.nav.input.CapsuleNavRoutes
+import com.example.common.nav.input.HistoryNavRoutes
 import com.example.spacex.ui.compose.auth.AuthScreen
 import com.example.spacex.ui.compose.auth.signOut
 import com.example.spacex.ui.compose.home.HomeScreen
 import com.example.spacex.ui.compose.list.capsule.CapsuleDetailsScreen
 import com.example.spacex.ui.compose.list.capsule.CapsuleListScreen
+import com.example.spacex.ui.compose.list.history.HistoryDetailsScreen
 import com.example.spacex.ui.compose.list.history.HistoryListScreen
 import com.example.spacex.ui.compose.list.launch.LaunchListScreen
 import com.example.spacex.ui.compose.list.mission.MissionListScreen
@@ -113,7 +115,13 @@ fun App(navController: NavHostController) {
                 CapsuleDetailsScreen(CapsuleNavRoutes.Details.fromEntry(it))
             }
             composable(NavRoutes.ROUTE_HISTORY) {
-                HistoryListScreen(hiltViewModel())
+                HistoryListScreen(hiltViewModel(), navController = navController)
+            }
+            composable(
+                route = NavRoutes.History.route,
+                arguments = NavRoutes.History.arguments
+            ) {
+                HistoryDetailsScreen(HistoryNavRoutes.Details.fromEntry(it))
             }
             composable(NavRoutes.ROUTE_MISSIONS) {
                 MissionListScreen(hiltViewModel(), navController = navController)

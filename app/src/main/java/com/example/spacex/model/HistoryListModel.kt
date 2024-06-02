@@ -4,10 +4,10 @@ import com.example.spacex.converter.HistoryListConverter
 
 
 data class HistoryListModel(
-    val items: List<HistoryItem> = listOf()
+    val items: List<History> = listOf()
 )
 
-data class HistoryItem(
+data class History(
     val details: String? = "",
     val eventDateUtc: String? = "",
     val flightNumber: Int? = 0,

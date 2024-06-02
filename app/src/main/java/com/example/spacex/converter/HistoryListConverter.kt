@@ -3,7 +3,7 @@ package com.example.spacex.converter
 import android.content.Context
 import com.example.common.state.CommonResultConverter
 import com.example.domain.usecase.history.GetHistoryUseCase
-import com.example.spacex.model.HistoryItem
+import com.example.spacex.model.History
 import com.example.spacex.model.HistoryListModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
@@ -17,7 +17,7 @@ class HistoryListConverter @Inject constructor(
     ): HistoryListModel {
         return HistoryListModel(
             items = data.history?.map {
-                HistoryItem(
+                History(
                     details = it?.details,
                     eventDateUtc = it?.eventDateUtc,
                     flightNumber = it?.flightNumber,

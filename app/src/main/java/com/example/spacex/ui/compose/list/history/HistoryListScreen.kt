@@ -1,5 +1,7 @@
 package com.example.spacex.ui.compose.list.history
 
+import android.util.Log
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -16,15 +18,20 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.common.state.CommonScreen
-import com.example.spacex.model.HistoryItem
+import com.example.spacex.model.History
 import com.example.spacex.model.HistoryListModel
+import com.example.spacex.ui.uiaction.capsule.CapsuleListSingleEvent
 import com.example.spacex.ui.uiaction.history.HistoryListAction
+import com.example.spacex.ui.uiaction.history.HistoryListSingleEvent
 import com.example.spacex.ui.viewmodel.HistoryListViewModel
+import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun HistoryListScreen(
-    viewModel: HistoryListViewModel
+    viewModel: HistoryListViewModel,
+    navController: NavHostController
 ) {
     LaunchedEffect(Unit) {
         viewModel.submitAction(HistoryListAction.Load)
@@ -37,7 +44,10 @@ fun HistoryListScreen(
                 HistoryList(it) { item ->
                     viewModel.submitAction(
                         HistoryListAction.OnHistoryItemClick(
-                            item.id
+                            item.title,
+                            item.details,
+                            item.flightNumber,
+                            item.eventDateUtc
                         )
                     )
                 }
@@ -46,12 +56,23 @@ fun HistoryListScreen(
 
         }
     }
+
+    LaunchedEffect(Unit) {
+        viewModel.singleEventFlow.collectLatest {
+            when (it) {
+                is HistoryListSingleEvent.OpenDetailsScreen -> {
+                    Log.i("ROUTE", it.navRoute)
+                    navController.navigate(it.navRoute)
+                }
+            }
+        }
+    }
 }
 
 @Composable
 fun HistoryList(
     model: HistoryListModel,
-    onItemClick: (HistoryItem) -> Unit
+    onItemClick: (History) -> Unit
 ) {
 
     LazyColumn(
@@ -60,15 +81,16 @@ fun HistoryList(
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         items(model.items) { history ->
-            HistoryItem(history)
+            HistoryItem(historyItem = history, onItemClick = onItemClick)
         }
     }
 }
 
 @Composable
-fun HistoryItem(historyItem: HistoryItem) {
+fun HistoryItem(historyItem: History, onItemClick: (History) -> Unit) {
     Card(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth()
+            .clickable { onItemClick (historyItem) },
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
         Column(
@@ -77,10 +99,6 @@ fun HistoryItem(historyItem: HistoryItem) {
                 .padding(16.dp)
         ) {
             Text(text = "Title: ${historyItem.title}")
-            Text(text = "Details: ${historyItem.details}")
-            Text(text = "Event Date (UTC): ${historyItem.eventDateUtc}")
-            Text(text = "Flight Number: ${historyItem.flightNumber}")
-            Text(text = "ID: ${historyItem.id}")
         }
 
     }

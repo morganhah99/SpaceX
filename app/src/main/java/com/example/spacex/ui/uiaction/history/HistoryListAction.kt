@@ -7,6 +7,9 @@ sealed class HistoryListAction: UiAction {
     data object Load: HistoryListAction()
 
     data class OnHistoryItemClick(
-        val id: Int?
+        val title: String?,
+        val details: String?,
+        val flightNumber: Int?,
+        val date: String?
     ) : HistoryListAction()
 }
