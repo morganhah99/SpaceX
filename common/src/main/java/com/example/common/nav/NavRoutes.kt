@@ -5,28 +5,16 @@ import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
+import com.example.common.nav.input.CapsuleInput
+import com.example.common.nav.input.CapsuleNavRoutes
 
 sealed class NavRoutes(
     val route: String,
     val arguments: List<NamedNavArgument> = emptyList()
 ) {
     data object Home : NavRoutes(ROUTE_HOME)
-    data object Capsule : NavRoutes(
-        route = "$ROUTE_CAPSULE_DETAILS/{$ARG_CAPSULE_DATA}",
-        arguments = listOf(
-            navArgument(ARG_CAPSULE_DATA) { type = NavType.StringType }
-        )
-    ) {
-        fun routeForCapsule(input: CapsuleInput): String {
-            val json = Uri.encode(input.toJson())
-            return "$ROUTE_CAPSULE_DETAILS/$json"
-        }
+    object Capsule : NavRoutes(CapsuleNavRoutes.Details.route, CapsuleNavRoutes.Details.arguments)
 
-        fun fromEntry(entry: NavBackStackEntry): CapsuleInput {
-            val json = entry.arguments?.getString(ARG_CAPSULE_DATA) ?: ""
-            return CapsuleInput.fromJson(json)
-        }
-    }
 
     companion object {
         const val ROUTE_HOME = "home"

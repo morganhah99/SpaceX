@@ -28,6 +28,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.common.nav.NavRoutes
+import com.example.common.nav.input.CapsuleNavRoutes
 import com.example.spacex.ui.compose.auth.AuthScreen
 import com.example.spacex.ui.compose.auth.signOut
 import com.example.spacex.ui.compose.home.HomeScreen
@@ -109,7 +110,7 @@ fun App(navController: NavHostController) {
                 route = NavRoutes.Capsule.route,
                 arguments = NavRoutes.Capsule.arguments
             ) {
-                CapsuleDetailsScreen(NavRoutes.Capsule.fromEntry(it))
+                CapsuleDetailsScreen(CapsuleNavRoutes.Details.fromEntry(it))
             }
             composable(NavRoutes.ROUTE_HISTORY) {
                 HistoryListScreen(hiltViewModel())
