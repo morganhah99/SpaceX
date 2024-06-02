@@ -2,7 +2,7 @@ package com.example.data.remote.source.capsule
 
 import com.example.data.remote.model.capsule.CapsuleItemModel
 import com.example.data.remote.service.SpaceXService
-import com.example.data.repo.capsule.RemoteCapsuleDataSource
+import com.example.data.remote.repo.capsule.RemoteCapsuleDataSource
 import com.example.domain.entity.Capsule
 import com.example.domain.entity.UseCaseException
 import kotlinx.coroutines.flow.Flow

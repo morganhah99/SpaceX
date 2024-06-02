@@ -1,4 +1,4 @@
-package com.example.data.repo.launch
+package com.example.data.remote.repo.launch
 
 import com.example.domain.entity.Launch
 import com.example.domain.repo.LaunchRepository

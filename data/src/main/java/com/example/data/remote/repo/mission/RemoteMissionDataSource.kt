@@ -1,4 +1,4 @@
-package com.example.data.repo.mission
+package com.example.data.remote.repo.mission
 
 import com.example.domain.entity.Mission
 import kotlinx.coroutines.flow.Flow

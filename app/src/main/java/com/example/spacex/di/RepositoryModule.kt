@@ -1,13 +1,13 @@
 package com.example.spacex.di
 
-import com.example.data.repo.capsule.CapsuleRepositoryImpl
-import com.example.data.repo.capsule.RemoteCapsuleDataSource
-import com.example.data.repo.history.HistoryRepositoryImpl
-import com.example.data.repo.history.RemoteHistoryDataSource
-import com.example.data.repo.mission.MissionRepositoryImpl
-import com.example.data.repo.mission.RemoteMissionDataSource
-import com.example.data.repo.rocket.RemoteRocketDataSource
-import com.example.data.repo.rocket.RocketRepositoryImpl
+import com.example.data.remote.repo.capsule.CapsuleRepositoryImpl
+import com.example.data.remote.repo.capsule.RemoteCapsuleDataSource
+import com.example.data.remote.repo.history.HistoryRepositoryImpl
+import com.example.data.remote.repo.history.RemoteHistoryDataSource
+import com.example.data.remote.repo.mission.MissionRepositoryImpl
+import com.example.data.remote.repo.mission.RemoteMissionDataSource
+import com.example.data.remote.repo.rocket.RemoteRocketDataSource
+import com.example.data.remote.repo.rocket.RocketRepositoryImpl
 import com.example.domain.repo.CapsuleRepository
 import com.example.domain.repo.HistoryRepository
 import com.example.domain.repo.MissionRepository

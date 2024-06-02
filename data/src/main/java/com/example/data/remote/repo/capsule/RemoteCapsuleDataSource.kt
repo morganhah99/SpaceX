@@ -1,4 +1,4 @@
-package com.example.data.repo.capsule
+package com.example.data.remote.repo.capsule
 
 import kotlinx.coroutines.flow.Flow
 import com.example.domain.entity.Capsule

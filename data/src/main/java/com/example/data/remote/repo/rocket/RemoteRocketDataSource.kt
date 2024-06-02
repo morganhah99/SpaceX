@@ -1,4 +1,4 @@
-package com.example.data.repo.rocket
+package com.example.data.remote.repo.rocket
 
 import com.example.domain.entity.Rocket
 import kotlinx.coroutines.flow.Flow

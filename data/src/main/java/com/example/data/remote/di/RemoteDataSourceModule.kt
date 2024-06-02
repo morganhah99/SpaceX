@@ -5,11 +5,11 @@ import com.example.data.remote.source.history.RemoteHistoryDataSourceImpl
 import com.example.data.remote.source.launch.RemoteLaunchDataSourceImpl
 import com.example.data.remote.source.mission.RemoteMissionDataSourceImpl
 import com.example.data.remote.source.rocket.RemoteRocketDataSourceImpl
-import com.example.data.repo.capsule.RemoteCapsuleDataSource
-import com.example.data.repo.history.RemoteHistoryDataSource
-import com.example.data.repo.launch.RemoteLaunchDataSource
-import com.example.data.repo.mission.RemoteMissionDataSource
-import com.example.data.repo.rocket.RemoteRocketDataSource
+import com.example.data.remote.repo.capsule.RemoteCapsuleDataSource
+import com.example.data.remote.repo.history.RemoteHistoryDataSource
+import com.example.data.remote.repo.launch.RemoteLaunchDataSource
+import com.example.data.remote.repo.mission.RemoteMissionDataSource
+import com.example.data.remote.repo.rocket.RemoteRocketDataSource
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

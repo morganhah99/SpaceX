@@ -2,7 +2,7 @@ package com.example.data.remote.source.rocket
 
 import com.example.data.remote.model.rocket.RocketItemModel
 import com.example.data.remote.service.SpaceXService
-import com.example.data.repo.rocket.RemoteRocketDataSource
+import com.example.data.remote.repo.rocket.RemoteRocketDataSource
 import com.example.domain.entity.Rocket
 import com.example.domain.entity.UseCaseException
 import kotlinx.coroutines.flow.Flow

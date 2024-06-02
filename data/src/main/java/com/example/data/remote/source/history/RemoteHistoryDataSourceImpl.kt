@@ -2,7 +2,7 @@ package com.example.data.remote.source.history
 
 import com.example.data.remote.model.history.HistoryModel
 import com.example.data.remote.service.SpaceXService
-import com.example.data.repo.history.RemoteHistoryDataSource
+import com.example.data.remote.repo.history.RemoteHistoryDataSource
 import com.example.domain.entity.History
 import com.example.domain.entity.UseCaseException
 import kotlinx.coroutines.flow.Flow

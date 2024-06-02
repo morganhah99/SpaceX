@@ -1,4 +1,4 @@
-package com.example.data.repo.history
+package com.example.data.remote.repo.history
 
 import com.example.domain.entity.History
 import kotlinx.coroutines.flow.Flow

@@ -2,7 +2,7 @@ package com.example.data.remote.source.mission
 
 import com.example.data.remote.model.mission.MissionItemModel
 import com.example.data.remote.service.SpaceXService
-import com.example.data.repo.mission.RemoteMissionDataSource
+import com.example.data.remote.repo.mission.RemoteMissionDataSource
 import com.example.domain.entity.Mission
 import com.example.domain.entity.UseCaseException
 import kotlinx.coroutines.flow.Flow
