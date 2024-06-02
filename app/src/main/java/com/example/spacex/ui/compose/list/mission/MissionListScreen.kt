@@ -82,7 +82,6 @@ fun Mission(mission: Mission, onItemClick: (Mission) -> Unit) {
                 .fillMaxWidth()
                 .padding(16.dp)
         ) {
-            Text(text = "Mission ID: ${mission.missionId}")
             Text(text = "Mission Name: ${mission.missionName}")
             Text(text = "Details: ${mission.description}")
         }

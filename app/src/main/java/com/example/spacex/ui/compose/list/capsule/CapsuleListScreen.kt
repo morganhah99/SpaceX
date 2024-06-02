@@ -97,12 +97,10 @@ fun CapsuleItem(capsule: Capsule, onItemClick: (Capsule) -> Unit) {
                 .fillMaxWidth()
                 .padding(16.dp)
         ) {
-            Text(text = "Capsule ID: ${capsule.capsuleId}")
             Text(text = "Capsule Serial: ${capsule.capsuleSerial}")
             Text(text = "Details: ${capsule.details}")
             Text(text = "Landings: ${capsule.landings}")
             Text(text = "Original Launch: ${capsule.originalLaunch}")
-            Text(text = "Reuse Count: ${capsule.reuseCount}")
             Text(text = "Status: ${capsule.status}")
             Text(text = "Type: ${capsule.type}")
         }

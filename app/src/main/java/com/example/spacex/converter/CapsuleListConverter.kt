@@ -18,13 +18,10 @@ class CapsuleListConverter @Inject constructor(
         return CapsuleListModel(
             items = data.capsules?.map {
                 Capsule(
-                    capsuleId = it?.capsuleId,
                     capsuleSerial = it?.capsuleSerial,
                     details = it?.details,
                     landings = it?.landings,
                     originalLaunch = it?.originalLaunch,
-                    originalLaunchUnix = it?.originalLaunchUnix,
-                    reuseCount = it?.reuseCount,
                     status = it?.status,
                     type = it?.type
                 )

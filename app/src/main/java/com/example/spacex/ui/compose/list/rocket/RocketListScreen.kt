@@ -90,6 +90,8 @@ fun Rocket(rocket: Rocket, onItemClick: (Rocket) -> Unit) {
             Text(text = "Company: ${rocket.company}")
             Text(text = "Description: ${rocket.description}")
             Text(text = "Cost per launch: ${rocket.costPerLaunch}")
+            Text(text = "Cost per launch: ${rocket.rocketType}")
+
         }
     }
 }

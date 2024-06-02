@@ -16,7 +16,6 @@ class MissionListConverter @Inject constructor(
             items = data.missions!!.map {
                 Mission(
                     description = it?.description,
-                    manufacturers = it?.manufacturers,
                     missionId = it?.missionId,
                     missionName = it?.missionName,
                     )

@@ -9,7 +9,6 @@ data class HistoryListModel(
 
 data class HistoryItem(
     val details: String? = "",
-    val eventDateUnix: Int? = 0,
     val eventDateUtc: String? = "",
     val flightNumber: Int? = 0,
     val id: Int? = 0,

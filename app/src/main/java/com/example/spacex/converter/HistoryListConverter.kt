@@ -19,7 +19,6 @@ class HistoryListConverter @Inject constructor(
             items = data.history?.map {
                 HistoryItem(
                     details = it?.details,
-                    eventDateUnix = it?.eventDateUnix,
                     eventDateUtc = it?.eventDateUtc,
                     flightNumber = it?.flightNumber,
                     id = it?.id,

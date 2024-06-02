@@ -7,11 +7,6 @@ data class MissionListModel (
 
 data class Mission(
     val description: String? = "",
-    val manufacturers: List<String?>? = listOf(),
     val missionId: String? = "",
     val missionName: String? = "",
-    val payloadIds: List<String?>? = listOf(),
-    val twitter: String? = "",
-    val website: String? = "",
-    val wikipedia: String? = ""
 )
