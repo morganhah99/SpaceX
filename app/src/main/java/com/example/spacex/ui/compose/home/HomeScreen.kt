@@ -31,7 +31,7 @@ fun HomeScreen(navController: NavHostController) {
         "Launches" to NavRoutes.ROUTE_LAUNCHES,
         "Missions" to NavRoutes.ROUTE_MISSIONS,
         "Rockets" to NavRoutes.ROUTE_ROCKETS,
-        "Ships" to ""
+        "Ships" to NavRoutes.ROUTE_SHIPS
     )
     Column(
         modifier = Modifier
