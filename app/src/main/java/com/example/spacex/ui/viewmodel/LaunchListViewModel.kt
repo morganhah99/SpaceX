@@ -1,11 +1,17 @@
 package com.example.spacex.ui.viewmodel
 
 import androidx.lifecycle.viewModelScope
+import com.example.common.nav.input.HistoryInput
+import com.example.common.nav.input.HistoryNavRoutes
+import com.example.common.nav.input.LaunchInput
+import com.example.common.nav.input.LaunchNavRoutes
 import com.example.common.state.MviViewModel
 import com.example.common.state.UiState
 import com.example.domain.usecase.launch.GetLaunchesUseCase
 import com.example.spacex.converter.LaunchListConverter
 import com.example.spacex.model.LaunchListModel
+import com.example.spacex.ui.uiaction.history.HistoryListAction
+import com.example.spacex.ui.uiaction.history.HistoryListSingleEvent
 import com.example.spacex.ui.uiaction.launch.LaunchListAction
 import com.example.spacex.ui.uiaction.launch.LaunchListSingleEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -27,7 +33,19 @@ class LaunchListViewModel @Inject constructor(
             is LaunchListAction.Load -> {
                 loadLaunches()
             }
-            is LaunchListAction.OnLaunchItemClick -> TODO()
+            is LaunchListAction.OnLaunchItemClick -> {
+                submitSingleEvent(
+                    LaunchListSingleEvent.OpenDetailsScreen(
+                        LaunchNavRoutes.Details.routeForLaunch(
+                            LaunchInput(
+                                action.details,
+                                action.success,
+                                action.missionName
+                            )
+                        )
+                    )
+                )
+            }
         }
     }
 

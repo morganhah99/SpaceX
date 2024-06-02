@@ -8,6 +8,7 @@ import androidx.navigation.navArgument
 import com.example.common.nav.input.CapsuleInput
 import com.example.common.nav.input.CapsuleNavRoutes
 import com.example.common.nav.input.HistoryNavRoutes
+import com.example.common.nav.input.LaunchNavRoutes
 
 sealed class NavRoutes(
     val route: String,
@@ -17,6 +18,8 @@ sealed class NavRoutes(
     object Capsule : NavRoutes(CapsuleNavRoutes.Details.route, CapsuleNavRoutes.Details.arguments)
 
     object History : NavRoutes(HistoryNavRoutes.Details.route, HistoryNavRoutes.Details.arguments)
+    object Launch : NavRoutes(LaunchNavRoutes.Details.route, LaunchNavRoutes.Details.arguments)
+
 
 
     companion object {

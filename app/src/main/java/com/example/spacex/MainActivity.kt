@@ -30,6 +30,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.common.nav.NavRoutes
 import com.example.common.nav.input.CapsuleNavRoutes
 import com.example.common.nav.input.HistoryNavRoutes
+import com.example.common.nav.input.LaunchNavRoutes
 import com.example.spacex.ui.compose.auth.AuthScreen
 import com.example.spacex.ui.compose.auth.signOut
 import com.example.spacex.ui.compose.home.HomeScreen
@@ -37,6 +38,7 @@ import com.example.spacex.ui.compose.list.capsule.CapsuleDetailsScreen
 import com.example.spacex.ui.compose.list.capsule.CapsuleListScreen
 import com.example.spacex.ui.compose.list.history.HistoryDetailsScreen
 import com.example.spacex.ui.compose.list.history.HistoryListScreen
+import com.example.spacex.ui.compose.list.launch.LaunchDetailsScreen
 import com.example.spacex.ui.compose.list.launch.LaunchListScreen
 import com.example.spacex.ui.compose.list.mission.MissionListScreen
 import com.example.spacex.ui.compose.list.rocket.RocketListScreen
@@ -130,7 +132,13 @@ fun App(navController: NavHostController) {
                 RocketListScreen(hiltViewModel(), navController = navController)
             }
             composable(NavRoutes.ROUTE_LAUNCHES) {
-                LaunchListScreen(hiltViewModel())
+                LaunchListScreen(hiltViewModel(), navController = navController)
+            }
+            composable(
+                route = NavRoutes.Launch.route,
+                arguments = NavRoutes.Launch.arguments
+            ) {
+                LaunchDetailsScreen(LaunchNavRoutes.Details.fromEntry(it))
             }
             composable(NavRoutes.ROUTE_SHIPS) {
                 ShipListScreen(hiltViewModel())

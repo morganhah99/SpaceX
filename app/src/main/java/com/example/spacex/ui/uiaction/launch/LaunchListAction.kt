@@ -7,7 +7,9 @@ sealed class LaunchListAction: UiAction {
     data object Load: LaunchListAction()
 
     data class OnLaunchItemClick(
-        val number: Int?
+        val details: String?,
+        val success: Boolean?,
+        val missionName: String?
     ) : LaunchListAction()
 
 }
