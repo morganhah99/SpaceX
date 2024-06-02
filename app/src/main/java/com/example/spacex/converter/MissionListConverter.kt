@@ -12,18 +12,16 @@ class MissionListConverter @Inject constructor(
     @ApplicationContext private val context: Context
 ): CommonResultConverter<GetMissionsUseCase.Response, MissionListModel>() {
     override fun convertSuccess(data: GetMissionsUseCase.Response): MissionListModel {
-        return data.missions.let { it ->
-            MissionListModel(
-                items = it!!.map {
-                    Mission(
-                        description = it?.description,
-                        manufacturers = it?.manufacturers,
-                        missionId = it?.missionId,
-                        missionName = it?.missionName,
-                        )
-                }
-            )
-        }
+        return MissionListModel(
+            items = data.missions!!.map {
+                Mission(
+                    description = it?.description,
+                    manufacturers = it?.manufacturers,
+                    missionId = it?.missionId,
+                    missionName = it?.missionName,
+                    )
+            }
+        )
     }
 
 

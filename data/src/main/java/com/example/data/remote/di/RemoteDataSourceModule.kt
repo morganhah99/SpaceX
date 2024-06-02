@@ -3,9 +3,11 @@ package com.example.data.remote.di
 import com.example.data.remote.source.capsule.RemoteCapsuleDataSourceImpl
 import com.example.data.remote.source.history.RemoteHistoryDataSourceImpl
 import com.example.data.remote.source.mission.RemoteMissionDataSourceImpl
+import com.example.data.remote.source.rocket.RemoteRocketDataSourceImpl
 import com.example.data.repo.capsule.RemoteCapsuleDataSource
 import com.example.data.repo.history.RemoteHistoryDataSource
 import com.example.data.repo.mission.RemoteMissionDataSource
+import com.example.data.repo.rocket.RemoteRocketDataSource
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -24,6 +26,9 @@ abstract class RemoteDataSourceModule {
 
     @Binds
     abstract fun bindMissionInfoDataSource(dataSource: RemoteMissionDataSourceImpl): RemoteMissionDataSource
+
+    @Binds
+    abstract fun bindRocketInfoDataSource(dataSource: RemoteRocketDataSourceImpl): RemoteRocketDataSource
 
 
 

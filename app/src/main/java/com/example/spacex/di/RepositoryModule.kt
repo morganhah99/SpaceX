@@ -6,9 +6,12 @@ import com.example.data.repo.history.HistoryRepositoryImpl
 import com.example.data.repo.history.RemoteHistoryDataSource
 import com.example.data.repo.mission.MissionRepositoryImpl
 import com.example.data.repo.mission.RemoteMissionDataSource
+import com.example.data.repo.rocket.RemoteRocketDataSource
+import com.example.data.repo.rocket.RocketRepositoryImpl
 import com.example.domain.repo.CapsuleRepository
 import com.example.domain.repo.HistoryRepository
 import com.example.domain.repo.MissionRepository
+import com.example.domain.repo.RocketRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -36,6 +39,13 @@ class RepositoryModule {
     fun provideMissionRepository(
         remoteSource: RemoteMissionDataSource
     ): MissionRepository = MissionRepositoryImpl(
+        remoteSource
+    )
+
+    @Provides
+    fun provideRocketRepository(
+        remoteSource: RemoteRocketDataSource
+    ) : RocketRepository = RocketRepositoryImpl(
         remoteSource
     )
 }

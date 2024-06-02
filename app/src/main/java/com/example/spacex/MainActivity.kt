@@ -35,6 +35,7 @@ import com.example.spacex.ui.compose.list.capsule.CapsuleDetailsScreen
 import com.example.spacex.ui.compose.list.capsule.CapsuleListScreen
 import com.example.spacex.ui.compose.list.history.HistoryListScreen
 import com.example.spacex.ui.compose.list.mission.MissionListScreen
+import com.example.spacex.ui.compose.list.rocket.RocketListScreen
 import com.example.spacex.ui.theme.SpaceXTheme
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
@@ -113,6 +114,9 @@ fun App(navController: NavHostController) {
             }
             composable(NavRoutes.ROUTE_MISSIONS) {
                 MissionListScreen(hiltViewModel(), navController = navController)
+            }
+            composable(NavRoutes.ROUTE_ROCKETS) {
+                RocketListScreen(hiltViewModel(), navController = navController)
             }
         }
     }
