@@ -33,7 +33,12 @@ class CapsuleListViewModel @Inject constructor(
                     CapsuleListSingleEvent.OpenDetailsScreen(
                         NavRoutes.Capsule.routeForCapsule(
                             CapsuleInput(
-                                action.serial
+                                action.serial,
+                                action.details,
+                                action.status,
+                                action.landings,
+                                action.type,
+                                action.launch
                             )
                         )
                     )

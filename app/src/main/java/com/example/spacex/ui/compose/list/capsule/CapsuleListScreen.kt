@@ -42,7 +42,12 @@ fun CapsuleListScreen(
                 CapsuleList(it) { item ->
                     viewModel.submitAction(
                         CapsuleListAction.OnCapsuleItemClick(
-                            item.capsuleSerial
+                            item.capsuleSerial,
+                            item.details,
+                            item.status,
+                            item.landings,
+                            item.type,
+                            item.originalLaunch
                         )
                     )
                 }
@@ -98,11 +103,6 @@ fun CapsuleItem(capsule: Capsule, onItemClick: (Capsule) -> Unit) {
                 .padding(16.dp)
         ) {
             Text(text = "Capsule Serial: ${capsule.capsuleSerial}")
-            Text(text = "Details: ${capsule.details}")
-            Text(text = "Landings: ${capsule.landings}")
-            Text(text = "Original Launch: ${capsule.originalLaunch}")
-            Text(text = "Status: ${capsule.status}")
-            Text(text = "Type: ${capsule.type}")
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.common.nav
 
+import android.net.Uri
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavType
@@ -11,18 +12,19 @@ sealed class NavRoutes(
 ) {
     data object Home : NavRoutes(ROUTE_HOME)
     data object Capsule : NavRoutes(
-        route = "$ROUTE_CAPSULE_DETAILS/{$ARG_CAPSULE_SERIAL}",
+        route = "$ROUTE_CAPSULE_DETAILS/{$ARG_CAPSULE_DATA}",
         arguments = listOf(
-            navArgument(ARG_CAPSULE_SERIAL) { type = NavType.StringType }
+            navArgument(ARG_CAPSULE_DATA) { type = NavType.StringType }
         )
     ) {
-        fun routeForCapsule(input: CapsuleInput) =
-            "$ROUTE_CAPSULE_DETAILS/${input.serialId}"
+        fun routeForCapsule(input: CapsuleInput): String {
+            val json = Uri.encode(input.toJson())
+            return "$ROUTE_CAPSULE_DETAILS/$json"
+        }
 
         fun fromEntry(entry: NavBackStackEntry): CapsuleInput {
-            return CapsuleInput(
-                entry.arguments?.getString(ARG_CAPSULE_SERIAL) ?: ""
-            )
+            val json = entry.arguments?.getString(ARG_CAPSULE_DATA) ?: ""
+            return CapsuleInput.fromJson(json)
         }
     }
 
@@ -35,7 +37,10 @@ sealed class NavRoutes(
         const val ROUTE_SHIPS = "ships"
         const val ROUTE_AUTH = "auth"
         const val ROUTE_HISTORY = "history"
+        const val ARG_CAPSULE_DATA = "capsule_data"
         const val ROUTE_CAPSULE_DETAILS = "capsuleDetails"
         const val ARG_CAPSULE_SERIAL = "capsule_serial"
+        const val ARG_CAPSULE_DETAILS = "capsule_details"
+
     }
 }
