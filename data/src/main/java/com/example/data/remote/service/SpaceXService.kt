@@ -5,6 +5,7 @@ import com.example.data.remote.model.capsule.CapsuleItemModel
 import com.example.data.remote.model.history.HistoryModel
 import com.example.data.remote.model.mission.MissionItemModel
 import com.example.data.remote.model.rocket.RocketItemModel
+import com.example.data.remote.model.ship.ShipItemModel
 import retrofit2.http.GET
 
 interface SpaceXService {
@@ -38,6 +39,12 @@ interface SpaceXService {
 
     @GET("launches/{flight_number}")
     suspend fun getLaunch(number: Int?): LaunchItemModel
+
+    @GET("ships")
+    suspend fun getShips(): List<ShipItemModel>
+
+    @GET("ships/{ship_id}")
+    suspend fun getShip(id: String?): ShipItemModel
 
 
 }

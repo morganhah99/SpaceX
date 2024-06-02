@@ -10,6 +10,8 @@ import com.example.data.remote.repo.history.RemoteHistoryDataSource
 import com.example.data.remote.repo.launch.RemoteLaunchDataSource
 import com.example.data.remote.repo.mission.RemoteMissionDataSource
 import com.example.data.remote.repo.rocket.RemoteRocketDataSource
+import com.example.data.remote.repo.ship.RemoteShipDataSource
+import com.example.data.remote.source.ship.RemoteShipDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -34,6 +36,9 @@ abstract class RemoteDataSourceModule {
 
     @Binds
     abstract fun bindLaunchInfoDataSource(dataSource: RemoteLaunchDataSourceImpl): RemoteLaunchDataSource
+
+    @Binds
+    abstract fun bindShipInfoDataSource(dataSource: RemoteShipDataSourceImpl): RemoteShipDataSource
 
 
 

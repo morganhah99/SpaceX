@@ -32,6 +32,7 @@ sealed class NavRoutes(
         const val ROUTE_MISSIONS = "missions"
         const val ROUTE_LAUNCHES = "launches"
         const val ROUTE_ROCKETS = "rockets"
+        const val ROUTE_SHIPS = "ships"
         const val ROUTE_AUTH = "auth"
         const val ROUTE_HISTORY = "history"
         const val ROUTE_CAPSULE_DETAILS = "capsuleDetails"
