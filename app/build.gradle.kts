@@ -70,7 +70,9 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
     implementation(libs.firebase.auth)
+    implementation(libs.androidx.junit.ktx)
     testImplementation(libs.junit)
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
@@ -87,6 +89,21 @@ dependencies {
     kapt("com.google.dagger:hilt-compiler:2.51.1")
 
     implementation("io.coil-kt:coil-compose:2.6.0")
+
+    testImplementation ("junit:junit:4.13.2")
+    testImplementation ("org.mockito:mockito-core:3.11.2")
+    testImplementation ("org.mockito:mockito-inline:3.11.2")
+    testImplementation ("androidx.arch.core:core-testing:2.1.0")
+
+    testImplementation ("org.mockito.kotlin:mockito-kotlin:3.2.0")
+
+    testImplementation ("org.robolectric:robolectric:4.7.3")
+    // Coroutines Test
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2")
+
+    // Core Testing for InstantTaskExecutorRule
+    testImplementation("androidx.arch.core:core-testing:2.1.0")
+
 
 
 
