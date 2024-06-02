@@ -7,6 +7,12 @@ sealed class ShipListAction: UiAction  {
     data object Load: ShipListAction()
 
     data class OnShipItemClick(
-        val id: String?
+        val model: String?,
+        val shipName: String?,
+        val status: String?,
+        val shipType: String?,
+        val image: String?,
+        val weight: Int?,
+        val yearBuilt: Int?
     ) : ShipListAction()
 }

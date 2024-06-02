@@ -32,6 +32,7 @@ import com.example.common.nav.routes.HistoryNavRoutes
 import com.example.common.nav.routes.LaunchNavRoutes
 import com.example.common.nav.routes.MissionNavRoutes
 import com.example.common.nav.routes.RocketNavRoutes
+import com.example.common.nav.routes.ShipNavRoutes
 import com.example.spacex.ui.compose.auth.AuthScreen
 import com.example.spacex.ui.compose.auth.signOut
 import com.example.spacex.ui.compose.home.HomeScreen
@@ -45,6 +46,7 @@ import com.example.spacex.ui.compose.list.mission.MissionDetailsScreen
 import com.example.spacex.ui.compose.list.mission.MissionListScreen
 import com.example.spacex.ui.compose.list.rocket.RocketDetailsScreen
 import com.example.spacex.ui.compose.list.rocket.RocketListScreen
+import com.example.spacex.ui.compose.list.ship.ShipDetailsScreen
 import com.example.spacex.ui.compose.list.ship.ShipListScreen
 import com.example.spacex.ui.theme.SpaceXTheme
 import com.google.firebase.auth.FirebaseAuth
@@ -158,7 +160,13 @@ fun App(navController: NavHostController) {
                 LaunchDetailsScreen(LaunchNavRoutes.Details.fromEntry(it))
             }
             composable(NavRoutes.ROUTE_SHIPS) {
-                ShipListScreen(hiltViewModel())
+                ShipListScreen(hiltViewModel(), navController = navController)
+            }
+            composable(
+                route = NavRoutes.Ship.route,
+                arguments = NavRoutes.Ship.arguments
+            ) {
+                ShipDetailsScreen(ShipNavRoutes.Details.fromEntry(it))
             }
         }
     }

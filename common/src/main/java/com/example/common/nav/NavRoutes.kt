@@ -6,6 +6,7 @@ import com.example.common.nav.routes.HistoryNavRoutes
 import com.example.common.nav.routes.LaunchNavRoutes
 import com.example.common.nav.routes.MissionNavRoutes
 import com.example.common.nav.routes.RocketNavRoutes
+import com.example.common.nav.routes.ShipNavRoutes
 
 sealed class NavRoutes(
     val route: String,
@@ -18,7 +19,7 @@ sealed class NavRoutes(
     object Launch : NavRoutes(LaunchNavRoutes.Details.route, LaunchNavRoutes.Details.arguments)
     object Mission : NavRoutes(MissionNavRoutes.Details.route, MissionNavRoutes.Details.arguments)
     object Rocket : NavRoutes(RocketNavRoutes.Details.route, RocketNavRoutes.Details.arguments)
-
+    object Ship : NavRoutes(ShipNavRoutes.Details.route, ShipNavRoutes.Details.arguments)
 
 
 
