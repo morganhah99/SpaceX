@@ -1,5 +1,7 @@
 package com.example.spacex.ui.compose.home
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -9,29 +11,33 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
+import com.example.common.nav.NavRoutes
+import com.example.spacex.R
+import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.navigation.NavHostController
-import com.example.common.nav.NavRoutes
 
 @Composable
 fun HomeScreen(navController: NavHostController) {
     val items = listOf(
-        "Capsules" to NavRoutes.ROUTE_CAPSULES,
-        "History" to NavRoutes.ROUTE_HISTORY,
-        "Launches" to NavRoutes.ROUTE_LAUNCHES,
-        "Missions" to NavRoutes.ROUTE_MISSIONS,
-        "Rockets" to NavRoutes.ROUTE_ROCKETS,
-        "Ships" to NavRoutes.ROUTE_SHIPS
+        Triple("Capsules", NavRoutes.ROUTE_CAPSULES, R.drawable.capsule),
+        Triple("History", NavRoutes.ROUTE_HISTORY, R.drawable.history),
+        Triple("Launches", NavRoutes.ROUTE_LAUNCHES, R.drawable.launch),
+        Triple("Missions", NavRoutes.ROUTE_MISSIONS, R.drawable.mission),
+        Triple("Rockets", NavRoutes.ROUTE_ROCKETS, R.drawable.rocket),
+        Triple("Ships", NavRoutes.ROUTE_SHIPS, R.drawable.ship)
     )
     Column(
         modifier = Modifier
@@ -55,10 +61,10 @@ fun HomeScreen(navController: NavHostController) {
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                items(items) { (name, route) ->
-                    HomeGridItem(name = name) {
-                        if (route.isNotEmpty()) {
-                            navController.navigate(route)
+                items(items) { item ->
+                    HomeGridItem(name = item.first, imageRes = item.third) {
+                        if (item.second.isNotEmpty()) {
+                            navController.navigate(item.second)
                         }
                     }
                 }
@@ -66,24 +72,35 @@ fun HomeScreen(navController: NavHostController) {
         }
     }
 }
+
 @Composable
-fun HomeGridItem(name: String, onClick:() -> Unit) {
+fun HomeGridItem(name: String, imageRes: Int, onClick: () -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .aspectRatio(1f)
-            .padding(8.dp)
             .clickable { onClick() },
-
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp),
-            contentAlignment = Alignment.Center
         ) {
-            Text(text = name, style = MaterialTheme.typography.h6)
+            Image(
+                painter = painterResource(imageRes),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .fillMaxSize()
+            )
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color.Black.copy(alpha = 0.5f)),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(text = name, style = MaterialTheme.typography.h6, color = Color.White)
+            }
         }
     }
 }
