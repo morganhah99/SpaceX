@@ -47,7 +47,8 @@ fun LaunchListScreen(
                         LaunchListAction.OnLaunchItemClick(
                             item.details,
                             item.launchSuccess,
-                            item.missionName
+                            item.missionName,
+                            item.launchYear
                         )
                     )
                 }
@@ -101,7 +102,7 @@ fun LaunchItem(launchItem: Launch, onItemClick: (Launch) -> Unit) {
                 .fillMaxWidth()
                 .padding(16.dp)
         ) {
-            Text(text = "Details: ${launchItem.flightNumber}")
+            Text(text = "Flight Number: ${launchItem.flightNumber}")
         }
 
     }

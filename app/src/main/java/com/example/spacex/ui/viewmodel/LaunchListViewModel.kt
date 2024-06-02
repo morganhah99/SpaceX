@@ -36,7 +36,8 @@ class LaunchListViewModel @Inject constructor(
                             LaunchInput(
                                 action.details,
                                 action.success,
-                                action.missionName
+                                action.missionName,
+                                action.launchYear
                             )
                         )
                     )

@@ -42,7 +42,8 @@ class RocketListViewModel @Inject constructor(
                                 action.company,
                                 action.description,
                                 action.costPerLaunch,
-                                action.rocketType
+                                action.rocketType,
+                                action.country,
                             )
                         )
                     )

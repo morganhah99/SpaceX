@@ -20,22 +20,19 @@ fun RocketDetailsScreen(rocketInput: RocketInput) {
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Text(
-            text = "Capsule Serial: ${rocketInput.company}",
+            text = "Company: ${rocketInput.company}",
             style = MaterialTheme.typography.h6
         )
 
         Text(
-            text = "Details: ${rocketInput.rocketType}",
+            text = "Cost per Launch: $${rocketInput.costPerLaunch}",
             style = MaterialTheme.typography.body1
         )
 
         Text(
-            text = "Status: ${rocketInput.costPerLaunch}",
+            text = "Description: ${rocketInput.description}",
             style = MaterialTheme.typography.body1
         )
-        Text(
-            text = "Status: ${rocketInput.description}",
-            style = MaterialTheme.typography.body1
-        )
+
     }
 }

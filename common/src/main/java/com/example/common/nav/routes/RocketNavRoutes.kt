@@ -38,7 +38,8 @@ data class RocketInput(
     val company: String?,
     val description: String?,
     val costPerLaunch: Int?,
-    val rocketType: String?
+    val rocketType: String?,
+    val country: String?
 ) {
     fun toJson(): String {
         return Gson().toJson(this)

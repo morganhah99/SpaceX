@@ -19,10 +19,6 @@ fun CapsuleDetailsScreen(capsuleInput: CapsuleInput) {
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        Text(
-            text = "Capsule Serial: ${capsuleInput.serialId}",
-            style = MaterialTheme.typography.h6
-        )
 
         Text(
             text = "Details: ${capsuleInput.details}",

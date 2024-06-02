@@ -20,33 +20,22 @@ fun ShipDetailsScreen(shipInput: ShipInput) {
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Text(
-            text = "Capsule Serial: ${shipInput.model}",
+            text = "Ship Name: ${shipInput.shipName}",
             style = MaterialTheme.typography.h6
         )
 
         Text(
-            text = "Details: ${shipInput.shipName}",
+            text = "Ship Type: ${shipInput.shipType}",
             style = MaterialTheme.typography.body1
         )
 
         Text(
-            text = "Status: ${shipInput.status}",
+            text = "Image URL: ${shipInput.image}",
             style = MaterialTheme.typography.body1
         )
+
         Text(
-            text = "Status: ${shipInput.shipType}",
-            style = MaterialTheme.typography.body1
-        )
-        Text(
-            text = "Status: ${shipInput.image}",
-            style = MaterialTheme.typography.body1
-        )
-        Text(
-            text = "Status: ${shipInput.weight}",
-            style = MaterialTheme.typography.body1
-        )
-        Text(
-            text = "Status: ${shipInput.yearBuilt}",
+            text = "Year Built: ${shipInput.yearBuilt}",
             style = MaterialTheme.typography.body1
         )
     }

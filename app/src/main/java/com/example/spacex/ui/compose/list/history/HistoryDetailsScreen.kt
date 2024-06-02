@@ -20,23 +20,19 @@ fun HistoryDetailsScreen(historyInput: HistoryInput) {
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Text(
-            text = "Capsule Serial: ${historyInput.details}",
+            text = "Event Title: ${historyInput.title}",
             style = MaterialTheme.typography.h6
         )
 
         Text(
-            text = "Details: ${historyInput.date}",
+            text = "Event Details: ${historyInput.details}",
             style = MaterialTheme.typography.body1
         )
 
         Text(
-            text = "Status: ${historyInput.title}",
+            text = "Flight Number: ${historyInput.flightNumber}",
             style = MaterialTheme.typography.body1
         )
 
-        Text(
-            text = "Landings: ${historyInput.flightNumber}",
-            style = MaterialTheme.typography.body1
-        )
     }
 }

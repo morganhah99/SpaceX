@@ -38,6 +38,7 @@ data class LaunchInput(
     val details: String?,
     val success: Boolean?,
     val missionName: String?,
+    val launchYear: String?
 ) {
     fun toJson(): String {
         return Gson().toJson(this)

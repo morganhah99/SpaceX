@@ -47,7 +47,8 @@ fun RocketListScreen(
                             item.company,
                             item.description,
                             item.costPerLaunch,
-                            item.rocketType
+                            item.rocketType,
+                            item.country
                         )
                     )
                 }

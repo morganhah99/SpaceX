@@ -113,7 +113,7 @@ fun ShipItem(ship: ShipItem, onItemClick: (ShipItem) -> Unit) {
                 .fillMaxWidth()
                 .padding(16.dp)
         ) {
-            Text(text = "Capsule Serial: ${ship.shipId}")
+            Text(text = "Ship Id: ${ship.shipId}")
         }
     }
 }

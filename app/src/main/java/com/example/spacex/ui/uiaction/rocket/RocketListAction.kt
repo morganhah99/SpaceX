@@ -10,6 +10,7 @@ sealed class RocketListAction : UiAction {
         val company: String?,
         val description: String?,
         val costPerLaunch: Int?,
-        val rocketType: String?
+        val rocketType: String?,
+        val country: String?
     ) : RocketListAction()
 }

@@ -98,7 +98,7 @@ fun HistoryItem(historyItem: History, onItemClick: (History) -> Unit) {
                 .fillMaxWidth()
                 .padding(16.dp)
         ) {
-            Text(text = "Title: ${historyItem.title}")
+            Text(text = "${historyItem.title}")
         }
 
     }

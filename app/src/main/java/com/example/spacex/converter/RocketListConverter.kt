@@ -19,7 +19,8 @@ class RocketListConverter @Inject constructor(
                     id = it?.id,
                     rocketName = it?.rocketName,
                     company = it?.company,
-                    costPerLaunch = it?.costPerLaunch
+                    costPerLaunch = it?.costPerLaunch,
+                    country = it?.country
                 )
             }
         )

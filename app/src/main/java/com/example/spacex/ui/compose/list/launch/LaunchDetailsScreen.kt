@@ -20,18 +20,24 @@ fun LaunchDetailsScreen(launchInput: LaunchInput) {
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Text(
-            text = "Capsule Serial: ${launchInput.details}",
+            text = "Mission Name: ${launchInput.missionName}",
             style = MaterialTheme.typography.h6
         )
 
         Text(
-            text = "Details: ${launchInput.missionName}",
+            text = "Details: ${launchInput.details}",
             style = MaterialTheme.typography.body1
         )
 
         Text(
-            text = "Status: ${launchInput.success}",
+            text = "Launch Success: ${launchInput.success}",
+            style = MaterialTheme.typography.body1
+        )
+
+        Text(
+            text = "Launch Year: ${launchInput.launchYear}",
             style = MaterialTheme.typography.body1
         )
     }
 }
+
