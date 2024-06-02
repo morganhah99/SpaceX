@@ -12,7 +12,6 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,10 +27,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.common.nav.NavRoutes
-import com.example.common.nav.input.CapsuleNavRoutes
-import com.example.common.nav.input.HistoryNavRoutes
-import com.example.common.nav.input.LaunchNavRoutes
-import com.example.common.nav.input.MissionNavRoutes
+import com.example.common.nav.routes.CapsuleNavRoutes
+import com.example.common.nav.routes.HistoryNavRoutes
+import com.example.common.nav.routes.LaunchNavRoutes
+import com.example.common.nav.routes.MissionNavRoutes
+import com.example.common.nav.routes.RocketNavRoutes
 import com.example.spacex.ui.compose.auth.AuthScreen
 import com.example.spacex.ui.compose.auth.signOut
 import com.example.spacex.ui.compose.home.HomeScreen
@@ -43,6 +43,7 @@ import com.example.spacex.ui.compose.list.launch.LaunchDetailsScreen
 import com.example.spacex.ui.compose.list.launch.LaunchListScreen
 import com.example.spacex.ui.compose.list.mission.MissionDetailsScreen
 import com.example.spacex.ui.compose.list.mission.MissionListScreen
+import com.example.spacex.ui.compose.list.rocket.RocketDetailsScreen
 import com.example.spacex.ui.compose.list.rocket.RocketListScreen
 import com.example.spacex.ui.compose.list.ship.ShipListScreen
 import com.example.spacex.ui.theme.SpaceXTheme
@@ -77,6 +78,7 @@ fun App(navController: NavHostController) {
             bottomBarState.value = true
             topBarState.value = false
         }
+
         else -> {
             bottomBarState.value = false
             topBarState.value = true
@@ -138,6 +140,13 @@ fun App(navController: NavHostController) {
             }
             composable(NavRoutes.ROUTE_ROCKETS) {
                 RocketListScreen(hiltViewModel(), navController = navController)
+            }
+            composable(
+                route = NavRoutes.Rocket.route,
+                arguments = NavRoutes.Rocket.arguments
+            ) {
+                RocketDetailsScreen(RocketNavRoutes.Details.fromEntry(it))
+
             }
             composable(NavRoutes.ROUTE_LAUNCHES) {
                 LaunchListScreen(hiltViewModel(), navController = navController)

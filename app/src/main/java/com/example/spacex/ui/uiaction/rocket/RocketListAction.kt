@@ -7,6 +7,9 @@ sealed class RocketListAction : UiAction {
     data object Load : RocketListAction()
 
     data class OnRocketItemClick(
-        val id: Int?
+        val company: String?,
+        val description: String?,
+        val costPerLaunch: Int?,
+        val rocketType: String?
     ) : RocketListAction()
 }

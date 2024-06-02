@@ -1,15 +1,11 @@
 package com.example.common.nav
 
-import android.net.Uri
 import androidx.navigation.NamedNavArgument
-import androidx.navigation.NavBackStackEntry
-import androidx.navigation.NavType
-import androidx.navigation.navArgument
-import com.example.common.nav.input.CapsuleInput
-import com.example.common.nav.input.CapsuleNavRoutes
-import com.example.common.nav.input.HistoryNavRoutes
-import com.example.common.nav.input.LaunchNavRoutes
-import com.example.common.nav.input.MissionNavRoutes
+import com.example.common.nav.routes.CapsuleNavRoutes
+import com.example.common.nav.routes.HistoryNavRoutes
+import com.example.common.nav.routes.LaunchNavRoutes
+import com.example.common.nav.routes.MissionNavRoutes
+import com.example.common.nav.routes.RocketNavRoutes
 
 sealed class NavRoutes(
     val route: String,
@@ -20,8 +16,8 @@ sealed class NavRoutes(
 
     object History : NavRoutes(HistoryNavRoutes.Details.route, HistoryNavRoutes.Details.arguments)
     object Launch : NavRoutes(LaunchNavRoutes.Details.route, LaunchNavRoutes.Details.arguments)
-
     object Mission : NavRoutes(MissionNavRoutes.Details.route, MissionNavRoutes.Details.arguments)
+    object Rocket : NavRoutes(RocketNavRoutes.Details.route, RocketNavRoutes.Details.arguments)
 
 
 

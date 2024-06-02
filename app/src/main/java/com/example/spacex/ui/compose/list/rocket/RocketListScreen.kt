@@ -1,5 +1,6 @@
 package com.example.spacex.ui.compose.list.rocket
 
+import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -21,8 +22,11 @@ import androidx.navigation.NavController
 import com.example.common.state.CommonScreen
 import com.example.spacex.model.Rocket
 import com.example.spacex.model.RocketListModel
+import com.example.spacex.ui.uiaction.launch.LaunchListSingleEvent
 import com.example.spacex.ui.uiaction.rocket.RocketListAction
+import com.example.spacex.ui.uiaction.rocket.RocketListSingleEvent
 import com.example.spacex.ui.viewmodel.RocketListViewModel
+import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun RocketListScreen(
@@ -40,12 +44,26 @@ fun RocketListScreen(
                 RocketList(it) { item ->
                     viewModel.submitAction(
                         RocketListAction.OnRocketItemClick(
-                            item.id
+                            item.company,
+                            item.description,
+                            item.costPerLaunch,
+                            item.rocketType
                         )
                     )
                 }
             }
 
+        }
+    }
+
+    LaunchedEffect(Unit) {
+        viewModel.singleEventFlow.collectLatest {
+            when (it) {
+                is RocketListSingleEvent.OpenDetailsScreen -> {
+                    Log.i("ROUTE", it.navRoute)
+                    navController.navigate(it.navRoute)
+                }
+            }
         }
     }
 }
@@ -87,11 +105,6 @@ fun Rocket(rocket: Rocket, onItemClick: (Rocket) -> Unit) {
                 .padding(16.dp)
         ) {
             Text(text = "Rocket Name: ${rocket.rocketName}")
-            Text(text = "Company: ${rocket.company}")
-            Text(text = "Description: ${rocket.description}")
-            Text(text = "Cost per launch: ${rocket.costPerLaunch}")
-            Text(text = "Cost per launch: ${rocket.rocketType}")
-
         }
     }
 }

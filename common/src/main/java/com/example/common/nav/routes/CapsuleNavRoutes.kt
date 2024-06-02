@@ -1,4 +1,4 @@
-package com.example.common.nav.input
+package com.example.common.nav.routes
 
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.navArgument

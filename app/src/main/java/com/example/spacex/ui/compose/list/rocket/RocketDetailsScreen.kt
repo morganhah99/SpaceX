@@ -1,4 +1,4 @@
-package com.example.spacex.ui.compose.list.capsule
+package com.example.spacex.ui.compose.list.rocket
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -9,10 +9,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.common.nav.routes.CapsuleInput
+import com.example.common.nav.routes.RocketInput
 
 @Composable
-fun CapsuleDetailsScreen(capsuleInput: CapsuleInput) {
+fun RocketDetailsScreen(rocketInput: RocketInput) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -20,32 +20,21 @@ fun CapsuleDetailsScreen(capsuleInput: CapsuleInput) {
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Text(
-            text = "Capsule Serial: ${capsuleInput.serialId}",
+            text = "Capsule Serial: ${rocketInput.company}",
             style = MaterialTheme.typography.h6
         )
 
         Text(
-            text = "Details: ${capsuleInput.details}",
+            text = "Details: ${rocketInput.rocketType}",
             style = MaterialTheme.typography.body1
         )
 
         Text(
-            text = "Status: ${capsuleInput.status}",
+            text = "Status: ${rocketInput.costPerLaunch}",
             style = MaterialTheme.typography.body1
         )
-
         Text(
-            text = "Landings: ${capsuleInput.landings}",
-            style = MaterialTheme.typography.body1
-        )
-
-        Text(
-            text = "Type: ${capsuleInput.type}",
-            style = MaterialTheme.typography.body1
-        )
-
-        Text(
-            text = "Launch: ${capsuleInput.launch}",
+            text = "Status: ${rocketInput.description}",
             style = MaterialTheme.typography.body1
         )
     }

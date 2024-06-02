@@ -1,9 +1,8 @@
 package com.example.spacex.ui.viewmodel
 
 import androidx.lifecycle.viewModelScope
-import com.example.common.nav.input.CapsuleInput
-import com.example.common.nav.NavRoutes
-import com.example.common.nav.input.CapsuleNavRoutes
+import com.example.common.nav.routes.CapsuleInput
+import com.example.common.nav.routes.CapsuleNavRoutes
 import com.example.common.state.MviViewModel
 import com.example.common.state.UiState
 import com.example.domain.usecase.capsule.GetCapsulesUseCase
