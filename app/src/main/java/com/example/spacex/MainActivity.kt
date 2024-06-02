@@ -4,7 +4,17 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
@@ -12,14 +22,17 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -54,6 +67,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -71,7 +85,24 @@ fun App(navController: NavHostController) {
     val topBarState = remember { mutableStateOf(false) }
     val bottomBarState = remember { mutableStateOf(true) }
     val navBackStackEntry by navController.currentBackStackEntryAsState()
-
+    val currentRoute = navController.currentBackStackEntry?.destination?.route
+    val topBarTitle = remember(currentRoute) {
+        when (currentRoute) {
+            NavRoutes.ROUTE_CAPSULES -> "Capsules"
+            NavRoutes.Capsule.route -> "Capsule Details"
+            NavRoutes.ROUTE_HISTORY -> "History"
+            NavRoutes.History.route -> "History Details"
+            NavRoutes.ROUTE_MISSIONS -> "Missions"
+            NavRoutes.Mission.route -> "Mission Details"
+            NavRoutes.ROUTE_ROCKETS -> "Rockets"
+            NavRoutes.Rocket.route -> "Rocket Details"
+            NavRoutes.ROUTE_LAUNCHES -> "Launches"
+            NavRoutes.Launch.route -> "Launch Details"
+            NavRoutes.ROUTE_SHIPS -> "Ships"
+            NavRoutes.Ship.route -> "Ship Details"
+            else -> "Details"
+        }
+    }
 
 
     when (navBackStackEntry?.destination?.route) {
@@ -91,7 +122,8 @@ fun App(navController: NavHostController) {
         topBar = {
             if (topBarState.value) {
                 TopAppBar(
-                    title = { Text(text = "Details") },
+                    backgroundColor = MaterialTheme.colorScheme.primary,
+                    title = { Text(text = topBarTitle) },
                     navigationIcon = {
                         IconButton(onClick = { navController.popBackStack() }) {
                             Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "Back")
@@ -100,7 +132,11 @@ fun App(navController: NavHostController) {
                 )
             }
         },
-        bottomBar = { BottomAppBar(navController) }
+        bottomBar = {
+            if (bottomBarState.value){
+                BottomAppBar(navController)
+            }
+        }
     ) { innerPadding ->
         NavHost(
             navController = navController,
@@ -176,17 +212,32 @@ fun App(navController: NavHostController) {
 @Composable
 fun BottomAppBar(navController: NavHostController) {
     val auth = FirebaseAuth.getInstance()
-    BottomNavigation {
-        BottomNavigationItem(
-            selected = navController.currentBackStackEntry?.destination?.route == NavRoutes.Home.route,
-            onClick = { signOut(auth, navController) },
-            icon = {
-                Icon(
-                    painter = painterResource(R.drawable.logout_24dp_fill0_wght400_grad0_opsz24),
-                    contentDescription = null
-                )
-            },
-            label = { Text("Sign Out") }
-        )
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(56.dp)
+            .background(MaterialTheme.colorScheme.primary)
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(horizontal = 16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.End
+        ) {
+            Icon(
+                painter = painterResource(R.drawable.logout_24dp_fill0_wght400_grad0_opsz24),
+                contentDescription = null,
+                modifier = Modifier
+                    .clickable { signOut(auth, navController) }
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(
+                text = "Sign Out",
+                color = MaterialTheme.colorScheme.onPrimary,
+                modifier = Modifier
+                    .clickable { signOut(auth, navController) }
+            )
+        }
     }
 }
