@@ -7,6 +7,6 @@ sealed class MissionListAction: UiAction {
     data object Load: MissionListAction()
 
     data class OnMissionItemClick(
-        val id: String?
+        val description: String?
     ): MissionListAction()
 }

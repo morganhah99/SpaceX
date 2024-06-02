@@ -1,11 +1,17 @@
 package com.example.spacex.ui.viewmodel
 
 import androidx.lifecycle.viewModelScope
+import com.example.common.nav.input.HistoryInput
+import com.example.common.nav.input.HistoryNavRoutes
+import com.example.common.nav.input.MissionInput
+import com.example.common.nav.input.MissionNavRoutes
 import com.example.common.state.MviViewModel
 import com.example.common.state.UiState
 import com.example.domain.usecase.mission.GetMissionsUseCase
 import com.example.spacex.converter.MissionListConverter
 import com.example.spacex.model.MissionListModel
+import com.example.spacex.ui.uiaction.history.HistoryListAction
+import com.example.spacex.ui.uiaction.history.HistoryListSingleEvent
 import com.example.spacex.ui.uiaction.mission.MissionListAction
 import com.example.spacex.ui.uiaction.mission.MissionListSingleEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -25,8 +31,17 @@ class MissionListViewModel @Inject constructor(
             is MissionListAction.Load -> {
                 loadMissions()
             }
-            is MissionListAction.OnMissionItemClick -> TODO("Not yet implemented")
-
+            is MissionListAction.OnMissionItemClick -> {
+                submitSingleEvent(
+                    MissionListSingleEvent.OpenDetailsScreen(
+                        MissionNavRoutes.Details.routeForMission(
+                            MissionInput(
+                               action.description
+                            )
+                        )
+                    )
+                )
+            }
         }
     }
 
