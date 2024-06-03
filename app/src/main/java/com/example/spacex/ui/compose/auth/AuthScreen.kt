@@ -30,7 +30,6 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.example.common.nav.NavRoutes
 import com.google.firebase.auth.FirebaseAuth
 
 @Composable
@@ -134,8 +133,6 @@ fun LoginDialog(onDismiss: () -> Unit, navController: NavHostController) {
     val auth: FirebaseAuth = remember { FirebaseAuth.getInstance() }
     val context = LocalContext.current
 
-
-
     AlertDialog(
         modifier = Modifier
             .width(340.dp)
@@ -154,7 +151,8 @@ fun LoginDialog(onDismiss: () -> Unit, navController: NavHostController) {
                 TextField(
                     value = password,
                     onValueChange = { password = it },
-                    label = { Text(text = "Password") }
+                    label = { Text(text = "Password") },
+                    visualTransformation = PasswordVisualTransformation()
                 )
             }
         },
