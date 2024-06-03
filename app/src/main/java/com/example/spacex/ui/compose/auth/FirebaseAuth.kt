@@ -38,7 +38,14 @@ fun checkAuthStatus(auth: FirebaseAuth, navController: NavHostController) {
     }
 }
 
-fun signUpWithEmailAndPassword(email: String, password: String, confirmPassword: String, auth: FirebaseAuth, context: Context, navController: NavHostController) {
+fun signUpWithEmailAndPassword(
+    email: String,
+    password: String,
+    confirmPassword: String,
+    auth: FirebaseAuth,
+    context: Context,
+    onSignUpSuccess: () -> Unit
+) {
     if (password != confirmPassword) {
         Toast.makeText(context, "Passwords do not match", Toast.LENGTH_SHORT).show()
         return
@@ -48,12 +55,13 @@ fun signUpWithEmailAndPassword(email: String, password: String, confirmPassword:
         .addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 Toast.makeText(context, "Sign Up Successful", Toast.LENGTH_SHORT).show()
-                navController.navigate("home")
+                onSignUpSuccess()
             } else {
                 Toast.makeText(context, "Sign Up Failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
             }
         }
 }
+
 
 
 fun signOut(auth: FirebaseAuth, navController: NavHostController) {
