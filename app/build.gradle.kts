@@ -91,18 +91,19 @@ dependencies {
     implementation("io.coil-kt:coil-compose:2.6.0")
 
     testImplementation ("junit:junit:4.13.2")
-    testImplementation ("org.mockito:mockito-core:3.11.2")
-    testImplementation ("org.mockito:mockito-inline:3.11.2")
     testImplementation ("androidx.arch.core:core-testing:2.1.0")
 
     testImplementation ("org.mockito.kotlin:mockito-kotlin:3.2.0")
 
     testImplementation ("org.robolectric:robolectric:4.7.3")
-    // Coroutines Test
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2")
 
-    // Core Testing for InstantTaskExecutorRule
-    testImplementation("androidx.arch.core:core-testing:2.1.0")
+
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
+    testImplementation("io.mockk:mockk:1.13.11")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.2")
+    testImplementation("org.mockito:mockito-core:5.3.1")
+    testImplementation("org.mockito:mockito-junit-jupiter:5.3.1")
 
 
 
